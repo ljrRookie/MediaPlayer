@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
@@ -63,8 +64,15 @@ public class VideoPager extends BasePager {
                 intent.setDataAndType(Uri.parse(mediaItem.getData()), "video*//*");
                 mContext.startActivity(intent);*/
                 //2.调用自定义的播放器-显示意图
-                Intent intent = new Intent(mContext,SystemVideoPlayer.class);
-                intent.setDataAndType(Uri.parse(mediaItem.getData()), "video*//*");
+               /* Intent intent = new Intent(mContext,SystemVideoPlayer.class);
+                intent.setDataAndType(Uri.parse(mediaItem.getData()), "video*//**//*");
+                mContext.startActivity(intent);*/
+                //3.传递列表数据 - 对象-序列化
+                Intent intent = new Intent(mContext, SystemVideoPlayer.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("videolist",mMediaItems);
+                intent.putExtras(bundle);
+                intent.putExtra("position",position);
                 mContext.startActivity(intent);
             }
         });

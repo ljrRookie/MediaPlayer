@@ -5,7 +5,7 @@
                 android:gravity="center"
                 android:layout_height="match_parent">
 
-    <VideoView
+    <com.ljr.mediaplayer.view.MyVideoView
         android:layout_centerInParent="true"
         android:id="@+id/videoview"
         android:layout_width="match_parent"
